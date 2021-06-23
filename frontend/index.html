@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>ROI Calculator</title>
+	<link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+	<div class="outer">
+		<div class="header_title">
+			<h3 id="title_line">Return on Investment (ROI) Calculator</h3>
+		</div>
+		<div class="header" id="header">
+			<button class="header_button" id="fte_button">FTE Rate</button>
+			<button class="header_button" id="assumption_button">Assumptions</button>
+			<button class="header_button" id="tpt_button">Time Per Ticket</button>
+			<button class="header_button" id="coi_button">Cost Of Implementation</button>
+		</div>
+		<div class="content_block">
+			<div class="user_input">
+				<form id="form_test" method="post" action="processData">
+				    <table>
+					    <tr>
+					    	<td><label for="l0_ticket">L0 Tickets</label></td>
+					    	<td><input type="text" id="l0_ticket" name="L0_ticket" autofocus></td>
+					    </tr>
+					    <tr>
+					    	<td><label for="l1_ticket">L1 Tickets</label></td>
+					    	<td><input type="text" id="l1_ticket" name="L1_ticket" autofocus></td>
+					    </tr>
+					    <tr>
+					    	<td><label for="l2_ticket">L2 Tickets</label></td>
+					    	<td><input type="text" id="l2_ticket" name="L2_ticket" autofocus></td>
+					    </tr>
+					    <tr>
+					    	<td><label for="l3_ticket">L3 Tickets</label></td>
+					    	<td><input type="text" id="l3_ticket" name="L3_ticket" autofocus></td>
+					    </tr>
+					    <tr>
+					    	<td><label for="l4_ticket">L4 Tickets</label></td>
+					    	<td><input type="text" id="l4_ticket" name="L4_ticket" autofocus></td>
+					    </tr>
+					    <tr>
+					    	<td id="duration_label">Duration</td>	
+					    	<td id="duration">
+						    	<label for="years">Years:</label>
+								<select id="years" name="years">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>						  
+								</select>
+								
+						      	<label for="months">Months:</label>
+								<select id="months" name="months">
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>						  
+								</select>
+							</td>
+					    </tr>
+				    </table>
+				   	<input id="submit" type="submit" value="Calculate">
+		  		</form>
+		  	</div>
+		  	<div class="output">
+		  		<h3>This is output</h3>
+		  	</div>
+	  	</div>	
+	</div>
+
+
+
+	<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  		<div class="modal-content">
+    		<span class="close">&times;</span>
+    		<p>Some text in the Modal..</p>
+  		</div>
+
+	</div>
+
+	<script>
+	// Get the modal
+
+	var modal = document.getElementById("myModal");
+
+	// Get the button that opens the modal
+	var btn = document.getElementById("fte_button");
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
+
+	// When the user clicks the button, open the modal 
+	btn.onclick = function() {
+		alert("hello");
+		modal.style.display = "block";
+	}
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function() {
+	  modal.style.display = "none";
+	}
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) {
+	  if (event.target == modal) {
+	    modal.style.display = "none";
+	  }
+	}
+	</script>
+
+
+
+
+</body>
+</html>
