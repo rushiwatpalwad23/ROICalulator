@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+ 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" type="text/css" href="r2.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
+	<meta charset="utf-8">
+	<title>Check</title>
+</head>
+<body>
+	<div class="container">
+		<div class="header_title">
+			<h3 id="title_line">Return on Investment (ROI) Calculator</h3>
+		</div>
+		<!-- navbar -->
+		<div class="header" id="header">
+			<!-- buttons in header/navbar -->
+			<button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#fte_modal">FTE Rate</button>
+			<button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#assumptions_modal">Assumptions</button>
+			<button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#tpt_modal">Time Per Ticket</button>
+			<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#fte_modal">Cost of Implementation</button>
+		</div>
+		<!--  -->
+		<!-- input body -->
+		<div class="input_body">
+			<form>
+				<!-- L0 ticket -->
+		  		<div class="row mb-3">
+		    		<label for="l0_ticket" class="col-sm-5 col-form-label">L0 Tickets per Month </label>
+		    		<div class="col-sm-5">
+		      			<input type="number" class="form-control" id="l0_ticket" name="l0_ticket" onkeypress="return onlyNumberKey(event)">
+		    		</div>
+		  		</div>
+		  		<!-- L1 ticket -->
+		  		<div class="row mb-3">
+		    		<label for="l1_ticket" class="col-sm-5 col-form-label">L1 Tickets per Month</label>
+		    		<div class="col-sm-5">
+		      			<input type="number" class="form-control" id="l1_ticket" name="l1_ticket" onkeypress="return onlyNumberKey(event)">
+		    		</div>
+		  		</div>
+		  		<!-- L2 ticket -->
+		  		<div class="row mb-3">
+		    		<label for="l2_ticket" class="col-sm-5 col-form-label">L2 Tickets per Month</label>
+		    		<div class="col-sm-5">
+		      			<input type="number" class="form-control" id="l2_ticket" name="l2_ticket" onkeypress="return onlyNumberKey(event)">
+		    		</div>
+		  		</div>
+		  		<!-- L3 ticket -->
+		  		<div class="row mb-3">
+		    		<label for="l3_ticket" class="col-sm-5 col-form-label">L3 Tickets per Month</label>
+		    		<div class="col-sm-5">
+		      			<input type="number" class="form-control" id="l3_ticket" name="l3_ticket" onkeypress="return onlyNumberKey(event)">
+		    		</div>
+		  		</div>
+		  		<!-- L4 ticket -->
+		  		<div class="row mb-3">
+		    		<label for="l4_ticket" class="col-sm-5 col-form-label">L4 Tickets per Month</label>
+		    		<div class="col-sm-5">
+		      			<input type="number" class="form-control" id="l4_ticket" name="l4_ticket" onkeypress="return onlyNumberKey(event)">
+		    		</div>
+		  		</div>  
+		  		<!-- Duration -->
+		  		<div class="row mb-3">
+		    		<label class="col-sm-5 col-form-label">Duration</label>
+		    		<div class="col-sm-3">
+		    			<select id="years" class="form-select" aria-label="Default select example">
+	  						<option value="0" selected>Years</option>
+	  						<option value="1">1</option>
+	  						<option value="2">2</option>
+	  						<option value="3">3</option>
+	  						<option value="4">4</option>
+	  						<option value="5">5</option>
+	  						<option value="6">6</option>
+	  						<option value="7">7</option>
+	  						<option value="8">8</option>
+	  						<option value="9">9</option>
+	  						<option value="10">10</option>
+	  						<option value="11">11</option>
+	  						<option value="12">12</option>
+	  						<option value="13">13</option>
+	  						<option value="14">14</option>
+	  						<option value="15">15</option>
+	  						<option value="16">16</option>
+	  						<option value="17">17</option>
+	  						<option value="18">18</option>
+	  						<option value="19">19</option>
+	  						<option value="20">20</option>
+	  						<option value="21">21</option>
+	  						<option value="22">22</option>
+	  						<option value="23">23</option>
+	  						<option value="24">24</option>
+	  						<option value="25">25</option>	  						
+						</select>
+		    		</div>
+		    		<div class="col-sm-3">
+		    			<select id="months" class="form-select" aria-label="Default select example">
+	  						<option value="0" selected>Months</option>
+	  						<option value="1">1</option>
+	  						<option value="2">2</option>
+	  						<option value="3">3</option>
+	  						<option value="4">4</option>
+	  						<option value="5">5</option>
+	  						<option value="6">6</option>
+	  						<option value="7">7</option>
+	  						<option value="8">8</option>
+	  						<option value="9">9</option>
+	  						<option value="10">10</option>
+	  						<option value="11">11</option>
+						</select>
+		    		</div>
+		  		</div>  
+
+		  		<button type="button" class="btn btn-primary" onclick="calculation()">Calculate</button>
+		  		<button type="submit" class="btn btn-primary">Reset</button>
+			</form>
+		</div>
+		<div class="output_body">
+			<label for="investment">Investment</label>
+			<input type="text" name="investment" id="investment" value="15000" readonly><br>
+			<label for="savings">Savings</label>
+			<input type="text" name="savings" id="savings" value="0" readonly><br>
+			<label for="profit">Profit</label>
+			<input type="text" name="profit" id="profit" value="0" readonly>			
+		</div>
+
+
+		<!-- FTE Modal -->
+ 		<div class="modal fade" id="fte_modal" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+ 			<div class="modal-dialog">
+ 
+ 			<!-- FTE Modal content-->
+ 				<div class="modal-content">
+ 					<div class="modal-header">
+ 						<h4 class="modal-title">FTE Rate Card</h4>
+ 					</div>
+ 					<div class="modal-body">
+ 						<form style="text-align: center;">
+ 							<div class="form-inline">
+ 								<label for="l0_rate">L0: </label>
+ 								<input type="number" class="form-control" id="l0_rate" value="9600" onkeypress="return onlyNumberKey(event)">
+ 							</div>
+ 							<br>
+ 							<div class="form-inline">
+ 								<label for="l1_rate">L1: </label>
+ 								<input type="number" class="form-control" id="l1_rate" value="10000" onkeypress="return onlyNumberKey(event)">
+ 							</div>
+ 							<br>
+ 							<div class="form-inline">
+								<label for="l2_rate">L2: </label>
+							 	<input type="number" class="form-control" id="l2_rate" value="15000" onkeypress="return onlyNumberKey(event)">
+							</div>
+ 							<br>
+ 							<div class="form-inline">
+								<label for="l3_rate">L3: </label>
+							 	<input type="number" class="form-control" id="l3_rate" value="25000" onkeypress="return onlyNumberKey(event)">
+							</div>
+ 							<br>
+ 							<div class="form-inline">
+ 								<label for="l4_rate">L4: </label>
+ 								<input type="number" class="form-control" id="l4_rate" value="35000" onkeypress="return onlyNumberKey(event)">
+ 							</div>
+ 						</form>
+ 					</div>
+ 					<div class="modal-footer">
+          				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          				<button type="button" class="btn btn-primary" onclick="fte_save()">Save changes</button>
+        			</div>
+ 				</div>
+ 			</div>
+ 		</div>
+
+ 		<!-- Assumptions Modal -->
+ 		<div class="modal fade" id="assumptions_modal" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+ 			<div class="modal-dialog">
+ 
+ 				<!-- Assumptions Modal content-->
+ 				<div class="modal-content">
+ 					<div class="modal-header">
+ 						<h4 class="modal-title">Assumptions</h4>
+ 					</div>
+ 					<div class="modal-body">
+ 						<form style="text-align: center;">
+ 							<div class="form-inline">
+ 								<label for="fastrack_percent">% Resolved Through Fastrack: </label>
+ 								<input type="number" class="form-control" id="fastrack_percent" value="0.500" onkeypress="return onlyNumberKey(event)">
+ 							</div>
+ 							<br>
+ 							<div class="form-inline">
+ 								<label for="l1_percentage_reduction">% Reduction in L1 tickets created : </label>
+ 								<input type="number" class="form-control" id="l1_percentage_reduction" value="60" onkeypress="return onlyNumberKey(event)">
+ 							</div>
+ 							<br>
+ 							<div class="form-inline">
+ 								<label for="l2_percentage_reduction">% Reduction in Trouble tickets escalated to L2: </label>
+ 								<input type="number" class="form-control" id="l2_percentage_reduction" value="20" onkeypress="return onlyNumberKey(event)">
+ 							</div>
+ 							<br>
+ 							<div class="form-inline">
+ 								<label for="l3_percentage_reduction">% Reduction in Trouble tickets escalated to L3: </label>
+ 								<input type="number" class="form-control" id="l3_percentage_reduction" value="5" onkeypress="return onlyNumberKey(event)">
+ 							</div>
+ 							<br>
+ 							<div class="form-inline">
+ 								<label for="l4_percentage_reduction">% Reduction in Trouble tickets escalated to L4: </label>
+ 								<input type="number" class="form-control" id="l4_percentage_reduction" value="5" onkeypress="return onlyNumberKey(event)">
+ 							</div>
+ 							<br>
+ 							<div class="form-inline">
+ 								<label for="days_per_year">Number of Working days Annually</label>
+ 								<input type="number" class="form-control" id="days_per_year" value="240" onkeypress="return onlyNumberKey(event)">
+ 							</div>
+ 							<br>
+ 							<div class="form-inline">
+ 								<label for="hours_per_day">Working hours per day</label>
+ 								<input type="number" class="form-control" id="hours_per_day" value="8.5" onkeypress="return onlyNumberKey(event)">
+ 							</div>
+ 						</form>
+ 					</div>
+ 					<div class="modal-footer">
+ 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+ 						<button type="button" class="btn btn-primary" onclick="assumptions_save()">Save changes</button>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+
+ 		<!-- Time per Ticket Modal -->
+ 		<div class="modal fade" id="tpt_modal" role="dialog" data-bs-backdrop="static" data-bs-keyboard="false">
+ 			<div class="modal-dialog">
+ 
+ 			<!-- Time per Ticket Modal content-->
+ 				<div class="modal-content">
+ 					<div class="modal-header">
+ 						<h4 class="modal-title">Time per Ticket</h4>
+ 					</div>
+ 					<div class="modal-body">
+ 						<div class="container">
+ 							<div class="row">
+ 								<div class="col-lg-2">
+ 									<p>Identify Event in List</p>
+ 								</div>
+ 								<div class="col-lg-1">
+ 									<input type="number" value="125">
+ 								</div>
+ 							</div>
+ 							<div class="row">
+ 								<div class="col-lg-2">
+ 									<p>Assess Event Importance</p>
+ 								</div>
+ 								<div class="col-lg-1">
+ 									<input type="number" value="80">
+ 								</div>
+ 							</div>
+							<div class="row">
+ 								<div class="col-lg-2">
+ 									<p>Clear/close event</p>
+ 								</div>
+ 								<div class="col-lg-1">
+ 									<input type="number" value="20">
+ 								</div>
+ 							</div>
+ 							<div class="row">
+ 								<div class="col-lg-2">
+ 									<p>Enrich event</p>
+ 								</div>
+ 								<div class="col-lg-1">
+ 									<input type="number" value="65">
+ 								</div>
+ 							</div>
+ 							<div class="row">
+ 								<div class="col-lg-2">
+ 									<p>Clear trouble ticket</p>
+ 								</div>
+ 								<div class="col-lg-1">
+ 									<input type="number" value="60">
+ 								</div>
+ 							</div>
+ 							<div class="row">
+ 								<div class="col-lg-2">
+ 									<p>Total Seconds</p>
+ 								</div>
+ 								<div class="col-lg-1">
+ 									<input type="number" value="298.5">
+ 								</div>
+ 							</div>
+ 							<div class="row">
+ 								<div class="col-lg-2">
+									<p>Minutes per Ticket Resolution</p>
+								</div>
+								<div class="col-lg-1">
+									<input type="number" value="4.975">
+								</div>
+							</div>
+ 						</div>
+ 					</div>
+ 					<div class="modal-footer">
+ 						<h6 style="text-align: start;">*Given values are in seconds</h6>
+ 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+ 						<button type="button" class="btn btn-primary">Save changes</button>
+ 					</div>
+ 				</div>
+ 			</div>
+ 		</div>
+
+	</div>
+
+	<script type="text/javascript" src="r2.js"></script>
+</body>
+</html>
