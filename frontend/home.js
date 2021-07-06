@@ -1,5 +1,6 @@
 $(document).ready($("#org_modal").modal('toggle'))
 
+
 $('#l0_tickets').bind('input', function() {
     num = $(this).val().trim();
     if (isNaN(num) || num < 0) {
@@ -174,6 +175,7 @@ $('#tpt_6').bind('input', function() {
     } else {
         $("#tpt_6_error").prop("hidden", true)
         saveLevelValues()
+
     }
 
 })
@@ -274,36 +276,40 @@ $("#cancel_fte_modal, #fte_modal_close").click(function() {
 //Time per ticket functions
 
 
+
 var tpt = [
-    [0, 0, 0, 0, [0, 30],
-        [0, 70]
+    [0, 0, 0, 0, [0, .3],
+        [0, .70], 0, 0
     ],
-    [0, 0, 0, 0, [0, 90],
-        [0, 10]
+    [0, 0, 0, 0, [0, .90],
+        [0, .10], 0, 0
     ],
-    [0, 0, 0, 0, [0, 90],
-        [0, 10]
+    [0, 0, 0, 0, [0, .90],
+        [0, .10], 0, 0
     ],
-    [0, 0, 0, 0, [0, 90],
-        [0, 10]
+    [0, 0, 0, 0, [0, .90],
+        [0, .10], 0, 0
     ],
-    [0, 0, 0, 0, [0, 90],
-        [0, 10]
+    [0, 0, 0, 0, [0, .90],
+        [0, .10], 0, 0
     ]
 ]
 
-var temp_tpt = [...tpt]
+var temp_tpt = []
 
 var previous_level = 0
 
-function tpt_l0() {
+function tpt_l0(first = false) {
+
     $("#tpt_1_div").prop("hidden", true)
     $("#tpt_2_text").html("Identify Event in List")
     $("#tpt_3_text").html("Assess Event Importance")
     $("#tpt_4_text").html("Clear Trouble Ticket")
     $("#tpt_5_text").html("Clear/close Event")
     $("#tpt_6_text").html("Enrich Event")
+
     setTptValue(0)
+    setTptValue(0, first)
 
 }
 
@@ -369,6 +375,29 @@ function saveLevelValues() {
 
 function setTptValue(level) {
 
+    temp_tpt[previous_level][0] = Number($("#tpt_1").val())
+    temp_tpt[previous_level][1] = Number($("#tpt_2").val())
+    temp_tpt[previous_level][2] = Number($("#tpt_3").val())
+    temp_tpt[previous_level][3] = Number($("#tpt_4").val())
+    temp_tpt[previous_level][4][0] = Number($("#tpt_5").val())
+    temp_tpt[previous_level][5][0] = Number($("#tpt_6").val())
+    total_seconds = temp_tpt[previous_level][0] + temp_tpt[previous_level][1] + temp_tpt[previous_level][2] + temp_tpt[previous_level][3] + temp_tpt[previous_level][4][0] * temp_tpt[previous_level][4][1] + temp_tpt[previous_level][5][0] * temp_tpt[previous_level][5][1];
+    $("#tpt_total_seconds").val(total_seconds)
+
+    total_minutes = (total_seconds / 60).toFixed(2);
+
+    $("#tpt_minutes").val(total_minutes);
+
+    temp_tpt[previous_level][6] = total_seconds;
+
+    temp_tpt[previous_level][7] = total_minutes;
+
+}
+
+function setTptValue(level, first = false) {
+    if (!first) {
+        saveLevelValues()
+    }
     $("#tpt_1_error").prop("hidden", true);
     $("#tpt_2_error").prop("hidden", true);
     $("#tpt_3_error").prop("hidden", true);
@@ -383,12 +412,19 @@ function setTptValue(level) {
         // console.log("Next", previous_level)
         // console.log(temp_tpt)
 
+
+    previous_level = level
+
+
     $("#tpt_1").val(temp_tpt[previous_level][0])
     $("#tpt_2").val(temp_tpt[previous_level][1])
     $("#tpt_3").val(temp_tpt[previous_level][2])
     $("#tpt_4").val(temp_tpt[previous_level][3])
     $("#tpt_5").val(temp_tpt[previous_level][4][0])
     $("#tpt_6").val(temp_tpt[previous_level][5][0])
+
+    $("#tpt_total_seconds").val(temp_tpt[previous_level][6]);
+    $("#tpt_minutes").val(temp_tpt[previous_level][7])
 }
 
 $("#level_list").change(() => {
@@ -411,12 +447,51 @@ $("#open_tpt_modal").click(() => {
     $("#level_list option:eq(0)").prop("selected", "selected")
     previous_level = 0
     tpt_l0()
+    temp_tpt = []
+    for (i = 0; i < 8; i++) {
+        arr = tpt[i];
+        temp_tpt.push([])
+        temp_tpt[i][0] = arr[0];
+        temp_tpt[i][1] = arr[1];
+        temp_tpt[i][2] = arr[2];
+        temp_tpt[i][3] = arr[3];
+        temp_tpt[i][4] = [];
+        temp_tpt[i][4][0] = arr[4][0];
+        temp_tpt[i][4][1] = arr[4][1];
+        temp_tpt[i][5] = [];
+        temp_tpt[i][5][0] = arr[5][0];
+        temp_tpt[i][5][1] = arr[5][1];
+        temp_tpt[i][6] = arr[6];
+        temp_tpt[i][7] = arr[7];
+    }
+
+    console.log("Open", tpt)
+
+    previous_level = 0
+    tpt_l0(true)
 
 })
 
 
 $("#close_tpt_modal, #cancel_tpt_modal").click(() => {
     temp_tpt = [...tpt]
+    temp_tpt = []
+    for (i = 0; i < 8; i++) {
+        arr = tpt[i];
+        temp_tpt.push([])
+        temp_tpt[i][0] = arr[0];
+        temp_tpt[i][1] = arr[1];
+        temp_tpt[i][2] = arr[2];
+        temp_tpt[i][3] = arr[3];
+        temp_tpt[i][4] = [];
+        temp_tpt[i][4][0] = arr[4][0];
+        temp_tpt[i][4][1] = arr[4][1];
+        temp_tpt[i][5] = [];
+        temp_tpt[i][5][0] = arr[5][0];
+        temp_tpt[i][5][1] = arr[5][1];
+        temp_tpt[i][6] = arr[6];
+        temp_tpt[i][7] = arr[7];
+    }
 
     previous_level = 0
     $("#tpt_1_error").prop("hidden", true);
@@ -432,6 +507,23 @@ $("#close_tpt_modal, #cancel_tpt_modal").click(() => {
 
 $("#save_tpt_modal").click(() => {
     tpt = [...temp_tpt]
+    tpt = []
+    for (i = 0; i < 8; i++) {
+        arr = temp_tpt[i];
+        tpt.push([])
+        tpt[i][0] = arr[0];
+        tpt[i][1] = arr[1];
+        tpt[i][2] = arr[2];
+        tpt[i][3] = arr[3];
+        tpt[i][4] = [];
+        tpt[i][4][0] = arr[4][0];
+        tpt[i][4][1] = arr[4][1];
+        tpt[i][5] = [];
+        tpt[i][5][0] = arr[5][0];
+        tpt[i][5][1] = arr[5][1];
+        tpt[i][6] = arr[6];
+        tpt[i][7] = arr[7];
+    }
 
     if (!$("#tpt_1_error").is(":hidden") ||
         !$("#tpt_2_error").is(":hidden") ||
@@ -440,6 +532,9 @@ $("#save_tpt_modal").click(() => {
         !$("#tpt_5_error").is(":hidden") ||
         !$("#tpt_6_error").is(":hidden")) { return; }
     $("#tpt_modal").modal("toggle");
+
+    $("#tpt_modal").modal("toggle");
+    console.log("Saved", tpt)
 })
 
 
@@ -451,6 +546,13 @@ var percent_l3_reduction = 5
 var percent_l4_reduction = 5
 var working_days = 240
 var working_hours = 8.5
+var percent_fastrack = 0
+var percent_l1_reduction = 0
+var percent_l2_reduction = 0
+var percent_l3_reduction = 0
+var percent_l4_reduction = 0
+var working_days = 0
+var working_hours = 0
 
 $("#save_assumption_modal").click(function() {
     percent_fastrack = $("#fastrack_percent").val()
@@ -463,6 +565,7 @@ $("#save_assumption_modal").click(function() {
 })
 
 $("#cancel_assumption_modal, #assumption_modal_close").click(function() {
+$("#cancel_assumption_modal, #close_assumption_modal").click(function() {
     $("#fastrack_percent").val(percent_fastrack)
     $("#l1_percentage_reduction").val(percent_l1_reduction)
     $("#l2_percentage_reduction").val(percent_l2_reduction)
@@ -506,4 +609,5 @@ $("#save_org_modal").click(function(){
     }
 
 
+})
 })
