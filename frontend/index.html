@@ -1,43 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" type="text/css" href="index.css">	
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	
 	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>ROI Calculator</title>
-	<link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-	<div class="outer">
+	<div class="outer d-flex">
 		<div class="header_title">
-			<h3 id="title_line">Return on Investment (ROI) Calculator</h3>
+			<h3 id="title_line">Returnn on Investment (ROI) Calculator</h3>
 		</div>
 		<div class="header" id="header">
-			<button class="header_button" id="fte_button">FTE Rate</button>
+			<!-- <button class="header_button" id="fte_button" data-toggle="modal" data-target="#fte_modal">FTE Rate</button>
 			<button class="header_button" id="assumption_button">Assumptions</button>
 			<button class="header_button" id="tpt_button">Time Per Ticket</button>
-			<button class="header_button" id="coi_button">Cost Of Implementation</button>
+			<button class="header_button" id="coi_button">Cost Of Implementation</button>-->
+			<button class="header_button" data-toggle="modal" data-target="#fte_modal">FTE Rate</button>
+			<button type="button" class="header_button" data-toggle="modal" data-target="#assumption_modal">Assumptions</button>
+			<button type="button" class="header_button" data-toggle="modal" data-target="#coi_modal">Time Per Ticket</button>
+			<button type="button" class="header_button" data-toggle="modal" data-target="#fte_modal">Cost of Implementation</button>
 		</div>
 		<div class="content_block">
 			<div class="user_input">
-				<form id="form_test" method="post" action="processData">
+				<form id="form_test" method="post">
 				    <table>
 					    <tr>
-					    	<td><label for="l0_ticket">L0 Tickets</label></td>
+					    	<td><label class="ticket_level" for="l0_ticket">L0 Tickets</label></td>
 					    	<td><input type="text" id="l0_ticket" name="L0_ticket" autofocus></td>
 					    </tr>
 					    <tr>
-					    	<td><label for="l1_ticket">L1 Tickets</label></td>
+					    	<td><label class="ticket_level" for="l1_ticket">L1 Tickets</label></td>
 					    	<td><input type="text" id="l1_ticket" name="L1_ticket" autofocus></td>
 					    </tr>
 					    <tr>
-					    	<td><label for="l2_ticket">L2 Tickets</label></td>
+					    	<td><label class="ticket_level" for="l2_ticket">L2 Tickets</label></td>
 					    	<td><input type="text" id="l2_ticket" name="L2_ticket" autofocus></td>
 					    </tr>
 					    <tr>
-					    	<td><label for="l3_ticket">L3 Tickets</label></td>
+					    	<td><label class="ticket_level" for="l3_ticket">L3 Tickets</label></td>
 					    	<td><input type="text" id="l3_ticket" name="L3_ticket" autofocus></td>
 					    </tr>
 					    <tr>
-					    	<td><label for="l4_ticket">L4 Tickets</label></td>
+					    	<td><label class="ticket_level" for="l4_ticket">L4 Tickets</label></td>
 					    	<td><input type="text" id="l4_ticket" name="L4_ticket" autofocus></td>
 					    </tr>
 					    <tr>
@@ -45,6 +56,7 @@
 					    	<td id="duration">
 						    	<label for="years">Years:</label>
 								<select id="years" name="years">
+									<option value="0">0</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -54,6 +66,7 @@
 								
 						      	<label for="months">Months:</label>
 								<select id="months" name="months">
+									<option value="0">0</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
@@ -70,52 +83,27 @@
 		  		<h3>This is output</h3>
 		  	</div>
 	  	</div>	
-	</div>
-
-
-
-	<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-  		<div class="modal-content">
-    		<span class="close">&times;</span>
-    		<p>Some text in the Modal..</p>
+	  	
+	  	<!-- Modal -->
+  		<div class="modal fade" id="fte_modal" role="dialog">
+    		<div class="modal-dialog">
+    
+      		<!-- Modal content-->
+      			<div class="modal-content">
+        			<div class="modal-header">
+          				<button type="button" class="close" data-dismiss="modal">&times;</button>
+          				<h4 class="modal-title">Modal Header</h4>
+        			</div>
+        			<div class="modal-body">
+          				<p>Some textt in the modal.</p>
+        			</div>
+        			<div class="modal-footer">
+          				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        			</div>
+      			</div>
+    		</div>
   		</div>
-
-	</div>
-
-	<script>
-	// Get the modal
-
-	var modal = document.getElementById("myModal");
-
-	// Get the button that opens the modal
-	var btn = document.getElementById("fte_button");
-
-	// Get the <span> element that closes the modal
-	var span = document.getElementsByClassName("close")[0];
-
-	// When the user clicks the button, open the modal 
-	btn.onclick = function() {
-		alert("hello");
-		modal.style.display = "block";
-	}
-
-	// When the user clicks on <span> (x), close the modal
-	span.onclick = function() {
-	  modal.style.display = "none";
-	}
-
-	// When the user clicks anywhere outside of the modal, close it
-	window.onclick = function(event) {
-	  if (event.target == modal) {
-	    modal.style.display = "none";
-	  }
-	}
-	</script>
-
-
-
-
+	</div>	
+	
 </body>
 </html>

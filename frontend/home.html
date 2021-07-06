@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="home.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar bg-info ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h1 class="navbar-brand">Return of Investment (ROI) Calculator</h1>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="container" style="padding-top: 3%;">
+            <div class="row">
+                <!-- Input Division -->
+                <div class="col-md-6">
+                    <div class="panel panel-primary raisedbox">
+
+                        <div class="panel ">
+                            <div class="panel-body">
+                                <button class="btn btn-default" style="border-radius: 10px;" data-toggle="modal"
+                                    data-target="#org_modal" data-backdrop="static" data-keyboard="false">Organization Details</button>
+                                <button class="btn btn-default" style="border-radius: 10px;" data-toggle="modal"
+                                    data-target="#fte_modal" data-backdrop="static" data-keyboard="false">FTE
+                                    Rates</button>
+                                <button class="btn btn-default" style="border-radius: 10px;" data-toggle="modal"
+                                    data-target="#tpt_modal" data-backdrop="static" data-keyboard="false" id="open_tpt_modal">Time per
+                                    Ticket</button>
+                                <button class="btn btn-default" style="border-radius: 10px;" data-toggle="modal"
+                                    data-target="#fte_modal" data-backdrop="static"
+                                    data-keyboard="false">Assumptions</button>
+                                <button class="btn btn-default" style="border-radius: 10px;" data-toggle="modal"
+                                    data-target="#fte_modal" data-backdrop="static" data-keyboard="false">Cost of
+                                    Implementation</button>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="col-md-5 col-md-offset-1">
+                                <label for="l0_tickets" style="vertical-align : text-top;"><span id="L0_home">L0</span> Tickets per Month</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" id="l0_tickets" placeholder="0">
+                                <p style="font-size: 85%; color: red;" hidden id="l0_tickets_error">
+                                    *Only positive numbers allowed</p>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="col-md-5 col-md-offset-1">
+                                <label for="l1_tickets" style="vertical-align : text-top;"><span id="L1_home">L1</span> Tickets per Month</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" id="l1_tickets" placeholder="0">
+                                <p style="font-size: 85%; color: red;" hidden id="l1_tickets_error">
+                                    *Only positive numbers allowed</p>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="col-md-5 col-md-offset-1">
+                                <label for="l2_tickets" style="vertical-align : text-top;"><span id="L2_home">L2</span> Tickets per Month</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" id="l2_tickets" placeholder="0">
+                                <p style="font-size: 85%; color: red;" hidden id="l2_tickets_error">
+                                    *Only positive numbers allowed</p>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="col-md-5 col-md-offset-1">
+                                <label for="l3_tickets" style="vertical-align : text-top;"><span id="L3_home">L3</span> Tickets per Month</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" id="l3_tickets" placeholder="0">
+                                <p style="font-size: 85%; color: red;" hidden id="l3_tickets_error">
+                                    *Only positive numbers allowed</p>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="col-md-5 col-md-offset-1">
+                                <label for="l4_tickets" style="vertical-align : text-top;"><span id="L4_home">L4</span> Tickets per Month</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="tel" class="form-control" id="l4_tickets" placeholder="0">
+                                <p style="font-size: 85%; color: red;" hidden id="l4_tickets_error">
+                                    *Only positive numbers allowed</p>
+                            </div>
+                        </div>
+
+                        
+
+                        <div class="panel-body">
+                            <div class="col-md-5 col-md-offset-1">
+                                <label>Duration</label>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="text" id="years" class="form-control" placeholder="Years"></select>
+                            </div>
+
+                            <div class="col-md-3">
+                                <select id="months" class="form-control">
+                                    <option value="" disabled selected>Months</option>
+                                    <option value="0">0</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="panel-body" style="text-align: center;">
+                            <button class="btn btn-primary"
+                                style="font-size: 150%; border-radius: 15px;">Calculate</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Output Division -->
+                <div class="col-md-6">
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MODALS -->
+    <!-- FTE Modal -->
+    <div class="modal fade" id="fte_modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- FTE Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="fte_modal_close">&times;</button>
+                    <h4 class="modal-title">FTE Rate Card</h4>
+                </div>
+                <div class="modal-body" id="fte_modal_body">
+
+                    <div class="container">
+                        <div class="row" style="padding: 1%;">
+                            <form class="form-inline">
+                                <div class="col-lg-1">
+                                    <div class="radio">
+                                        <label><input type="radio" id="USD" name="opt_currency" value="USD" checked>
+                                            USD</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1">
+                                    <div class="radio">
+                                        <label><input type="radio" id="INR" name="opt_currency" value="INR"> INR</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1">
+                                    <div class="radio">
+                                        <label><input type="radio" id="EUR" name="opt_currency" value="EUR"> EUR</label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1">
+                                    <div class="radio">
+                                        <label><input type="radio" id="GBP" name="opt_currency" value="GBP"> GBP</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <br>
+                        <div class="row" style="padding: 0.5%;">
+                            <div class="col-lg-1">
+                                <p id="L0_fte_label">L0: </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="tel" min="0" id="l0_rate" value="9600" style="border-radius: 5px;">
+                                <p style="font-size: 75%; color: red;" hidden id="l0_fte_error">
+                                    *Only positive numbers allowed</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 0.5%;">
+                            <div class="col-lg-1">
+                                <p id="L1_fte_label">L1: </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="tel" min="0" style="border-radius: 5px;" id="l1_rate" value="10000">
+                                <p style="font-size: 75%; color: red;" hidden id="l1_fte_error">
+                                    *Only positive numbers allowed</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 0.5%;">
+                            <div class="col-lg-1">
+                                <p id="L2_fte_label">L2: </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="tel" min="0" style="border-radius: 5px;" id="l2_rate" value="15000">
+                                <p style="font-size: 75%; color: red;" hidden id="l2_fte_error">
+                                    *Only positive numbers allowed</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 0.5%;">
+                            <div class="col-lg-1">
+                                <p id="L3_fte_label">L3: </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="tel" min="0" style="border-radius: 5px;" id="l3_rate" value="25000">
+                                <p style="font-size: 75%; color: red;" hidden id="l3_fte_error">
+                                    *Only positive numbers allowed</p>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 0.5%;">
+                            <div class="col-lg-1">
+                                <p id="L4_fte_label">L4: </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="tel" min="0" style="border-radius: 5px;" id="l4_rate" value="35000">
+                                <p style="font-size: 75%; color: red;" hidden id="l4_fte_error">
+                                    *Only positive numbers allowed</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <h6 style="text-align: start;">*Given values are annual rates</h6>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="cancel_fte_modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save_fte_modal">Save changes</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Assumptions Modal -->
+    <div class="modal fade" id="assumptions_modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Assumptions Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                        id="assumption_modal_close">&times;</button>
+                    <h4 class="modal-title">Assumptions</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row" style="padding: 1%;">
+                            <div class="col-lg-3">
+                                <p>% Resolved Through Fastrack: </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" min="0" class="form-control" id="fastrack_percent" value="0.500">
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 1%;">
+                            <div class="col-lg-3">
+                                <p>% Reduction in L1 tickets created :</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" min="0" class="form-control" id="l1_percentage_reduction"
+                                    value="60">
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 1%;">
+                            <div class="col-lg-3">
+                                <p>% Reduction in Trouble tickets escalated to L2:</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" min="0" class="form-control" id="l2_percentage_reduction"
+                                    value="20">
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 1%;">
+                            <div class="col-lg-3">
+                                <p>% Reduction in Trouble tickets escalated to L3:</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" min="0" class="form-control" id="l3_percentage_reduction"
+                                    value="5">
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 1%;">
+                            <div class="col-lg-3">
+                                <p>% Reduction in Trouble tickets escalated to L4: </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" min="0" class="form-control" id="l4_percentage_reduction"
+                                    value="5">
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 1%;">
+                            <div class="col-lg-3">
+                                <p>Number of Working Days Annually </p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" min="0" max="365" class="form-control" id="working_days"
+                                    value="240">
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 1%;">
+                            <div class="col-lg-3">
+                                <p>Working Hours per Day</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" min="0" max="24" class="form-control" id="working_hours"
+                                    value="8.5">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                        id="cancel_assumption_modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="save_assumption_modal">Save
+                        changes</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Time per Ticket Modal -->
+    <div class="modal fade" id="tpt_modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Time per Ticket Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="close_tpt_modal">&times;</button>
+                    <h4 class="modal-title">Time per Ticket</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-body">
+
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p>Select Level</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <select id="level_list">
+                                                <option value="l0" selected>L0</option>
+                                                <option value="l1">L1</option>
+                                                <option value="l2">L2</option>
+                                                <option value="l3">L3</option>
+                                                <option value="l4">L4</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row" style="padding: 1%;" hidden id ="tpt_1_div">
+                                        <div class="col-lg-6">
+                                            <p id="tpt_1_text">Identify Event in List</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="tel" value="0" id="tpt_1"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="tpt_1_error">
+                                                *Only positive numbers allowed</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p id="tpt_2_text">Identify Event in List</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="tel" value="0" id="tpt_2"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="tpt_2_error">
+                                                *Only positive numbers allowed</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p id="tpt_3_text">Assess Event Importance</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="tel" value="0" id="tpt_3"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="tpt_3_error">
+                                                *Only positive numbers allowed</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p id="tpt_4_text">Clear trouble ticket</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="tel" value="0" id="tpt_4"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="tpt_4_error">
+                                                *Only positive numbers allowed</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p id="tpt_5_text">Clear/close event</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="tel" value="0" id="tpt_5"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="tpt_5_error">
+                                                *Only positive numbers allowed</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p id="tpt_6_text">Enrich event</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="tel" value="0" id="tpt_6"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="tpt_6_error">
+                                                *Only positive numbers allowed</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p >Total Seconds</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="tel" value="0" id="tpt_total_seconds"
+                                                style="border-radius: 5px;" readonly disabled>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <strong >Minutes per Ticket Resolution</strong>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="tel" value="0" id="tpt_minutes" style="border-radius: 5px;"
+                                                readonly disabled>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <h6 style="text-align: start;">*Given values are in seconds</h6>
+
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                        id="cancel_tpt_modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save_tpt_modal">Save Changes</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- COI Modal -->
+    <div class="modal fade" id="coi_modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- COI Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Cost of Implementation</h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p>Implementation Cost</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" id="cost_of_implementation" value="25000">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p>Infra Cost</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" id="cost_of_implementation" value="125000">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <p>Licensing Cost</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <input type="number" id="cost_of_implementation" value="0">
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="col-md-4 col-md-offset-1">
+                                <label>Duration of Implementation</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" id="implementation_months" value=3 class="form-control">
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Organization details Modal -->
+    <div class="modal fade" id="org_modal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Organization details Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" id="close_org_modal">&times;</button>
+                    <h4 class="modal-title">Organization Details</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="col-md-6">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p id="org_1_text">Organization Name</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text" value="" id="tpt_1"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="org_1_error"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p >Name for first level team/ support team:</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text" value="L0" id="first_level"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="org_2_error"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p>Name for second level team/Command Center team:</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text" value="L1" id="second_level"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="org_3_error"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p>Name for third level team/ support team:</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text" value="L2" id="third_level"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="org_4_error"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p >Name for fourth level team/ support team:</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text" value="L3" id="fourth_level"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="org_5_error"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p >Name for fifth level team/ Escalation support team:</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <input type="text" value="L4" id="fifth_level"
+                                                style="border-radius: 5px;">
+                                            <p style="font-size: 75%; color: red;" hidden id="org_6_error"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="padding: 1%;">
+                                        <div class="col-lg-6">
+                                            <p>Currency</p>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <select id="default_currency">
+                                                <option value="USD" selected>USD</option>
+                                                <option value="INR">INR</option>
+                                                <option value="EUR">EUR</option>
+                                                <option value="GBP">GBP</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"
+                        id="cancel_org_modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save_org_modal">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+    </script>
+
+
+    <script src="home.js"></script>
+</body>
+
+</html>
